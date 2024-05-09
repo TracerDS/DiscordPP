@@ -2,6 +2,7 @@
 /*/
 
 !/.gitignore
+!/.gitattributes
 
 !/premake5.lua
 !/src/
