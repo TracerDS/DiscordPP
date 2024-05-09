@@ -1,0 +1,11 @@
+/*
+/*/
+
+!/.gitignore
+
+!/premake5.lua
+!/src/
+!/lib/
+!/hpp/
+!/include/
+/**/.env
