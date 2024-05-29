@@ -1,6 +1,6 @@
 #include <discord/requests/user.hpp>
 #include <discord/endpoints.hpp>
-#include <utils.hpp>
+#include <misc/utils.hpp>
 
 namespace DiscordPP::Requests::User {
 	GetCurrentUser::GetCurrentUser() noexcept

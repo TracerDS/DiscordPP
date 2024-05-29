@@ -12,7 +12,10 @@ namespace DiscordPP {
 		Snowflake(const std::uint64_t rawData = 0) noexcept;
 		Snowflake(const int rawData) noexcept;
 		Snowflake(const char string[8]) noexcept;
+		Snowflake(const std::string string) noexcept;
+		Snowflake(const std::string_view string) noexcept;
 
+		Snowflake& operator=(const Snowflake snowflake) noexcept;
 		Snowflake& operator=(const std::uint64_t rawData) noexcept;
 		operator bool() const noexcept;
 
@@ -37,8 +40,6 @@ namespace DiscordPP {
 		friend std::ostream& operator<<(
 			std::ostream& stream,
 			const Snowflake id
-		) noexcept {
-			return stream << id.GetData();
-		}
+		) noexcept;
 	};
 }

@@ -1,5 +1,5 @@
 #pragma once
 
-#include <discord/client.hpp>
+#include <discord/application.hpp>
 #include <discord/user.hpp>
 #include <discord/snowflake.hpp>

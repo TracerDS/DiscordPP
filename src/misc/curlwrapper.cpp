@@ -1,7 +1,7 @@
 #pragma once
 
-#include <curlwrapper/wrapper.hpp>
-#include <utils.hpp>
+#include <misc/curlwrapper.hpp>
+#include <misc/utils.hpp>
 
 bool Curl::m_isCurlInitialized = false;
 

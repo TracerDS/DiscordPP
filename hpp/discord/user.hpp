@@ -49,7 +49,8 @@ namespace DiscordPP {
             // Moderator Programs Alumni
             CERTIFIED_MODERATOR = 1 << 18,
 
-            // Bot uses only HTTP interactions and is shown in the online member list
+            // Bot uses only HTTP interactions and is shown
+            // in the online member list
             BOT_HTTP_INTERACTIONS = 1 << 19,
 
             // User is an Active Developer
@@ -68,61 +69,70 @@ namespace DiscordPP {
             // visible to everyone
             Everyone = 1,
         };
+        struct AvatarDecorationData {
+            std::string asset;
+            Snowflake sku_id;
+        };
     protected:
         // the user's id
-        Snowflake m_id{};
+        Snowflake m_id;
         
         // the user's username, not unique across the platform
-        std::string username{};
+        std::string m_username;
 
         // the user's Discord-tag
-        std::string m_discriminator{};
+        std::string m_discriminator;
 
-        // the user's display name, if it is set. For bots, this is the application name
-        std::string m_globalName{};
+        // the user's display name, if it is set.
+        // For bots, this is the application name
+        std::string m_globalName;
 
         // the user's avatar hash
-        std::string m_avatar{};
+        std::string m_avatar;
 
         // whether the user belongs to an OAuth2 application
-        bool m_bot{};
+        bool m_bot;
 
-        // whether the user is an Official Discord System user (part of the urgent message system)
-        bool m_system{};
+        // whether the user is an Official Discord System
+        // user (part of the urgent message system)
+        bool m_system;
 
         // whether the user has two factor enabled on their account
-        bool m_mfaEnabled{};
+        bool m_mfaEnabled;
 
         // the user's banner hash
-        std::string m_banner{};
+        std::string m_banner;
         
-        // the user's banner color encoded as an integer representation of hexadecimal color code
-        int m_accentColor{};
+        // the user's banner color encoded as an integer
+        // representation of hexadecimal color code
+        std::uint32_t m_accentColor;
         
         // the user's chosen language option
-        std::string m_locale{};
+        std::string m_locale;
         
         // whether the email on this account has been verified	email
-        bool m_verified{};
+        bool m_verified;
 
         // the user's email	email
-        std::string m_email{};
+        std::string m_email;
 
         // the flags on a user's account
-        int m_flags{};
+        std::uint32_t m_flags;
 
         // the type of Nitro subscription on a user's account
-        int m_premiumType{};
+        PremiumType m_premiumType;
 
         // the public flags on a user's account
-        int m_publicFlags{};
+        std::uint32_t m_publicFlags;
 
         // the user's avatar decoration hash
-        std::string m_avatarDecoration{};
+        AvatarDecorationData m_avatarDecorationData;
     public:
         User(const Snowflake id = 0) noexcept;
         User(const rapidjson::Value& object) noexcept;
         
         bool LeaveGuild(const Snowflake guildID) noexcept;
+    private:
+        void Parse(const rapidjson::Value& object) noexcept;
     };
 }

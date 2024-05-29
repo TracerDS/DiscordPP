@@ -1,5 +1,5 @@
 #include <discord/snowflake.hpp>
-#include <utils.hpp>
+#include <misc/utils.hpp>
 
 namespace DiscordPP {
     Snowflake::Snowflake(const std::uint64_t rawData) noexcept
@@ -10,6 +10,16 @@ namespace DiscordPP {
 
     Snowflake::Snowflake(const char string[8]) noexcept
         : m_data(std::stoull(string)) {}
+
+    Snowflake::Snowflake(const std::string string) noexcept
+        : Snowflake(string.c_str()) {}
+
+    Snowflake::Snowflake(const std::string_view string) noexcept
+        : Snowflake(string.data()) {}
+
+    Snowflake& Snowflake::operator=(const Snowflake snowflake) noexcept {
+        return *this = snowflake.m_data;
+    }
 
     Snowflake& Snowflake::operator=(const std::uint64_t rawData) noexcept {
         m_data = rawData;
@@ -66,4 +76,9 @@ namespace DiscordPP {
     Snowflake::operator std::string() const noexcept {
         return ToString();
     }
+    
+    std::ostream& operator<<(
+        std::ostream& stream,
+        const Snowflake id
+    ) noexcept { return stream << id.GetData(); }
 }
